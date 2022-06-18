@@ -1,5 +1,8 @@
-export default function createHomePage(element) {
-  // header
+import createHomePage from "./homepage";
+import createMenuPage from "./menuPage";
+import createContactPage from "./contactPage";
+
+const createHeader = () => {
   const header = document.createElement('div');
   header.classList.add('header');
 
@@ -13,41 +16,62 @@ export default function createHomePage(element) {
   menuButton.id = 'menu';
   menuButton.textContent = 'Menu';
 
-  const aboutButton = document.createElement('li');
-  aboutButton.id = 'about';
-  aboutButton.textContent = 'About';
+  const contactButton = document.createElement('li');
+  contactButton.id = 'contact';
+  contactButton.textContent = 'Contact';
 
   ul.appendChild(homeButton);
   ul.appendChild(menuButton);
-  ul.appendChild(aboutButton);
+  ul.appendChild(contactButton);
 
   header.appendChild(ul);
 
-  // main
-  const main = document.createElement('div');
-  main.classList.add('main');
+  return header;
+};
 
-  const h1 = document.createElement('h1');
-  h1.textContent = "ProteinK's restaurant";
-  main.appendChild(h1);
-
-  const img = document.createElement('img');
-  img.src = './restaurant.jpg';
-  img.alt = 'restaurant';
-  img.width = '400';
-  main.appendChild(img);
-
-  const p = document.createElement('p');
-  p.textContent = `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-    Assumenda esse ab facilis ipsam enim, quasi illo cum`;
-  main.appendChild(p);
-
-  // footer
+const createFooter = () => {
   const footer = document.createElement('div');
   footer.classList.add('footer');
   footer.textContent = 'Made by ProteinK @ 2022 for Odin Project';
 
-  element.appendChild(header);
-  element.appendChild(main);
-  element.appendChild(footer);
+  return footer;
+};
+
+// don't recreate these reusable elements
+const header = createHeader();
+const footer = createFooter();
+
+export function renderHomePage() {
+  const content = document.querySelector('#content');
+  content.innerHTML = '';
+
+  header.querySelector('#home').classList.add('current');
+  header.querySelector('#menu').classList.remove('current');
+  header.querySelector('#contact').classList.remove('current');
+  content.appendChild(header);
+  content.appendChild(createHomePage());
+  content.appendChild(footer);
+}
+
+export function renderMenuPage() {
+  const content = document.querySelector('#content');
+  content.innerHTML = '';
+
+  header.querySelector('#home').classList.remove('current');
+  header.querySelector('#menu').classList.add('current');
+  header.querySelector('#contact').classList.remove('current')
+  content.appendChild(header);
+  content.appendChild(createMenuPage());
+  content.appendChild(footer);
+}
+export function renderContactPage() {
+  const content = document.querySelector('#content');
+  content.innerHTML = '';
+
+  header.querySelector('#home').classList.remove('current');
+  header.querySelector('#menu').classList.remove('current');
+  header.querySelector('#contact').classList.add('current')
+  content.appendChild(header);
+  content.appendChild(createMenuPage());
+  content.appendChild(footer);
 }

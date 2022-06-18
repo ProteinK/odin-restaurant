@@ -36,6 +36,11 @@ p {
   cursor: pointer;
 }
 
+li.current {
+  color: red;
+  font-weight: 700;
+}
+
 .main {
   display: flex;
   flex-direction: column;

@@ -1,5 +1,17 @@
 // pic by https://unsplash.com/photos/6pHiNI4qEnQ?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
-import createHomePage from "./page.js";
+import { renderHomePage, renderMenuPage, renderContactPage } from "./page";
 
-const content = document.querySelector('#content');
-createHomePage(content);
+renderHomePage();
+
+const homeButton = document.querySelector('#home');
+homeButton.addEventListener('click', () => {
+  renderHomePage();
+});
+const menuButton = document.querySelector('#menu');
+menuButton.addEventListener('click', () => {
+  renderMenuPage();
+});
+const contactButton = document.querySelector('#contact');
+contactButton.addEventListener('click', () => {
+  renderContactPage();
+});
