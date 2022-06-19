@@ -72,6 +72,6 @@ export function renderContactPage() {
   header.querySelector('#menu').classList.remove('current');
   header.querySelector('#contact').classList.add('current')
   content.appendChild(header);
-  content.appendChild(createMenuPage());
+  content.appendChild(createContactPage());
   content.appendChild(footer);
 }
