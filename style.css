@@ -24,12 +24,26 @@ p {
   padding: 15px;
 }
 
-.header ul {
+ul {
   padding: 0;
   margin: 0;
-  display: flex;
   list-style: none;
+}
+
+.header ul {
+  display: flex;
   gap: 30px;
+}
+
+ul.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.menu-item {
+  font-size: 1.3rem;
+  font-weight: 700;
 }
 
 .header li:hover {
